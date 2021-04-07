@@ -7,10 +7,21 @@ const connect = function () {
   });
   // interpret incoming data as text
   conn.setEncoding('utf8');
-
-  conn.on('connect', () => console.log('Successfully connected to game server'))
+  
   conn.on('data', data => console.log(data))
-  conn.on('connect', () => conn.write('Name: NEL'))
+  conn.on('connect', () => {
+    console.log('Successfully connected to game server')
+    conn.write('Name: NEL')
+    
+    //setInterval and clearInterval
+    const moveUp = setInterval (() => conn.write('Move: up'), 100)
+    setTimeout(() =>  clearInterval(moveUp), 7000);
+
+    // OR
+    // setTimeout(() => conn.write('Move: up'), 600)
+    // setTimeout(() => conn.write('Move: up'), 700)
+
+  })
   return conn;
 }
 
