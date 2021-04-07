@@ -1,4 +1,5 @@
 
+const { keys } = require('./constants')
 // Stores the active TCP connection object.
 let connection; //return conn
 
@@ -28,13 +29,5 @@ const setupInput = function (conn) {
 
   return stdin;
 }
-
-const keys = {
-  w: 'Move: up',
-  a: 'Move: left',
-  s: 'Move: down',
-  d: 'Move: right'
-}
-
 
 module.exports = { setupInput }
